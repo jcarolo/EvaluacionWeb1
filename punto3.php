@@ -8,6 +8,7 @@
 </head>
 <body>
 
+
 <header>
 <nav class="navbar navbar-expand-lg navbar-darrk bg-dark">
             <a class="navbar-brand" href="#">EvalucionWeb1</a>
@@ -39,66 +40,54 @@
 
 <main>
 
+    </p>
 <div class="container">
 <div class ="row justify-content-center">
-<div class="col-4">         
-			
-<form class=mt-5 action="punto1.php"method="POST">
-             <h5>CALCULADORA</h5>
+<div class="col-4">
+             <form class=mt-3 action="punto3.php"method="POST">
+             <h4>CÁLCULO DE DESCUENTOS SPRING STEP</h4>
                 <div class="row">
                 <div class="col">
-                <input type="number" class="form-control" placeholder="Primer valor" name="valor1">
+                <input type="number" class="form-control" placeholder="Numero de pares" name="npares">
                  </div>
                 <div class="col">
-                <input type="number" class="form-control" placeholder="Segundo valor"name="valor2"> 
-
+                <input type="number" class="form-control" placeholder="Valor par"name="vlrpar"> 
                  </div>
                 </div>
-				<button type="submit" class="btn btn-primary mt-3" name= "sum">Sumar</button>
-				<button type="submit" class="btn btn-primary mt-3" name= "res">Restar</button>
-				<button type="submit" class="btn btn-primary mt-3" name= "mul">Multiplicar</button>
-				<button type="submit" class="btn btn-primary mt-3" name= "div">Dividir</button>
-				              
+                <button type="submit" class="btn btn-primary mt-3" name= "botonCalcular">Calcular Descuento</button>
              </form>
 
-			 <?php
-			 
-			 if (isset($_POST["sum"])){
-							
-				$cifra1=$_POST["valor1"]; 
-				$cifra2=$_POST["valor2"]; 
-				$sumar=($cifra1+$cifra2);
-				echo ("El resultado de la suma es: " .$sumar);
-				 }	
-				 	  
-				
-				if (isset($_POST["res"])){
-							
-					$cifra1=$_POST["valor1"]; 
-					$cifra2=$_POST["valor2"]; 
-					$restar=($cifra1-$cifra2);
-					echo ("El resultado de la resta es: " .$restar);
-					 }
+            
+<?php   if (isset ($_POST["botonCalcular"] )) : 
+   ?>
+<h5 class="text-danger text center">
+<?php   $nparesZapatos=$_POST["npares"];
+                 $vlorpar=$_POST["vlrpar"]; 
+                 $totalcompra=($nparesZapatos * $vlorpar); 
+                 $descuento1=($totalcompra)*0.1;
+                 $descuento2=($totalcompra)*0.2;
+                 $descuento3=($totalcompra)*0.5;                                        
+                               
 
-					 if (isset($_POST["mul"])){
-							
-						$cifra1=$_POST["valor1"]; 
-						$cifra2=$_POST["valor2"]; 
-						$multiplicar=($cifra1*$cifra2);
-						echo ("El resultado de la multiplicación es: " .$multiplicar);
-						 }
+                  if ($nparesZapatos==3){
+                    $compradesc1 = ($totalcompra-$descuento1);
+                      echo ("Valor la compra es de : $ ".$compradesc1);
+                  }  
 
-						 if (isset($_POST["div"])){
-							
-							$cifra1=$_POST["valor1"]; 
-							$cifra2=$_POST["valor2"]; 
-							$dividir=($cifra1/$cifra2);
-							echo ("El resultado de la division es: " .$dividir);
-							 }			 
-			 			 	 
-			 
-			 ?>
-                 
+                else if ($nparesZapatos >=3 && $nparesZapatos <=8){
+                    $compradesc2= ($totalcompra-$descuento2);
+                    
+                 echo ("Valor la compra es de : $ ".$compradesc2);
+                }  
+                elseif ($nparesZapatos> 8)
+                {
+                  $compradesc3= ($totalcompra-$descuento3);                               
+                    
+                echo ("Valor la compra es de : $ ".$compradesc3);
+                }  
+                ?>
+                </h5> 
+<?php endif?>
 
 </div>
 
@@ -109,10 +98,11 @@
 <footer>
 </footer>
     
+
+
+
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
 </body>
 </html>
-
-

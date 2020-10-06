@@ -35,70 +35,72 @@
     </form>
   </div>
 </nav>
+
 </header>
 
 <main>
 
 <div class="container">
 <div class ="row justify-content-center">
-<div class="col-4">         
-			
-<form class=mt-5 action="punto1.php"method="POST">
-             <h5>CALCULADORA</h5>
+<div class="col-4">
+             <form class=mt-3 action="punto2.php"method="POST">
+             <h4>CALCULO IMC</h4>
                 <div class="row">
                 <div class="col">
-                <input type="number" class="form-control" placeholder="Primer valor" name="valor1">
+                <input type="text" class="form-control" placeholder="Digite su peso" name="peso">
                  </div>
                 <div class="col">
-                <input type="number" class="form-control" placeholder="Segundo valor"name="valor2"> 
-
+                <input type="text" class="form-control" placeholder="Digite su estatura"name="altura"> 
                  </div>
                 </div>
-				<button type="submit" class="btn btn-primary mt-3" name= "sum">Sumar</button>
-				<button type="submit" class="btn btn-primary mt-3" name= "res">Restar</button>
-				<button type="submit" class="btn btn-primary mt-3" name= "mul">Multiplicar</button>
-				<button type="submit" class="btn btn-primary mt-3" name= "div">Dividir</button>
-				              
+                <button type="submit" class="btn btn-primary mt-3" name= "botonCalcular">Calcular IMC</button>
              </form>
 
-			 <?php
-			 
-			 if (isset($_POST["sum"])){
-							
-				$cifra1=$_POST["valor1"]; 
-				$cifra2=$_POST["valor2"]; 
-				$sumar=($cifra1+$cifra2);
-				echo ("El resultado de la suma es: " .$sumar);
-				 }	
-				 	  
-				
-				if (isset($_POST["res"])){
-							
-					$cifra1=$_POST["valor1"]; 
-					$cifra2=$_POST["valor2"]; 
-					$restar=($cifra1-$cifra2);
-					echo ("El resultado de la resta es: " .$restar);
-					 }
+          
 
-					 if (isset($_POST["mul"])){
-							
-						$cifra1=$_POST["valor1"]; 
-						$cifra2=$_POST["valor2"]; 
-						$multiplicar=($cifra1*$cifra2);
-						echo ("El resultado de la multiplicación es: " .$multiplicar);
-						 }
 
-						 if (isset($_POST["div"])){
-							
-							$cifra1=$_POST["valor1"]; 
-							$cifra2=$_POST["valor2"]; 
-							$dividir=($cifra1/$cifra2);
-							echo ("El resultado de la division es: " .$dividir);
-							 }			 
-			 			 	 
-			 
-			 ?>
-                 
+
+<?php if (isset ($_POST['botonCalcular'])):
+    ?>
+  <h5 class="text-danger text center" > 
+
+<?php 
+$pesoKg = $_POST['peso'];
+$estatura = $_POST['altura'];
+
+ $imc = $pesoKg/($estatura*$estatura);
+ $imcred = round ($imc,2);
+
+if ($imc <= 18.5) {
+echo  ("Peso insuficiente");
+} else if ($imc > 18.5 AND $imc<=24.9 ) {
+echo  ("Peso Normal");
+} 
+else if ($imc > 25 && $imc<=26.9) {
+echo "Sobrepeso grado 1";
+}
+ else if ($imc > 27 && $imc<=29.9) {
+    echo   "Sobrepeso grado II";
+} 
+else if ($imc > 30 && $imc<=34.9) {
+    echo   "Obesidad tipo I";
+} 
+else if ($imc > 35 && $imc<=39.9) {
+    echo "Obesidad tipo II";
+} 
+else if ($imc > 40 && $imc<=49.9) {
+    echo  "Obesidad tipo III";         
+
+} else if ($imc > 50.0) 
+{
+echo  "Obesidad tipo IV";
+}
+echo (" y tu indice de masa corporal es " . $imcred); 
+
+?>
+</h5> 
+<?php endif?>
+
 
 </div>
 
@@ -108,11 +110,10 @@
 
 <footer>
 </footer>
-    
+   
+
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
 </body>
 </html>
-
-
